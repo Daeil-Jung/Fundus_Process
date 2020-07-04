@@ -1,5 +1,6 @@
 from PIL import Image
 import glob
+import os
 
 
 def os_flip(foldername):
@@ -8,13 +9,13 @@ def os_flip(foldername):
     :param foldername: string
     :return: None
     '''
-    dir_name = foldername + "/*"
+    dir_name = foldername + os.sep
 
-    image_files_list = list(glob.glob('Fundus/*'))
+    image_files_list = list(glob.glob('Fundus' + os.sep + "*"))
 
     # OS image flip algorithm
     for image_file in image_files_list:
-        if image_file.split("/")[-1].split("_")[1] == "OS":
+        if image_file.split(os.sep)[-1].split("_")[1] == "OS":
             im = Image.open(image_file)
             im = im.transpose(Image.FLIP_LEFT_RIGHT)
             im.save(image_file)

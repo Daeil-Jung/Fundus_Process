@@ -1,4 +1,4 @@
-import glob
+import glob, os
 import cv2
 import numpy as np
 
@@ -9,7 +9,7 @@ def red_ch_zeros(foldername):
     :param foldername: string
     :return: None
     '''
-    dir_name = foldername + "/*"
+    dir_name = foldername + os.sep + "*"
     image_files_list = list(glob.glob(dir_name))
 
     for image_file in image_files_list:

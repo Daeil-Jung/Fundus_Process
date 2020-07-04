@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import glob
+import os
 
 
 def sharpening(foldername):
@@ -9,7 +10,7 @@ def sharpening(foldername):
     :param foldername: string
     :return: None
     '''
-    dir_name = foldername + "/*"
+    dir_name = foldername + os.sep + "*"
     image_files_list = list(glob.glob(dir_name))
 
     sharpening = np.array([[-1, -1, -1, -1, -1],

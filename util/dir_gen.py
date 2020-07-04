@@ -12,11 +12,11 @@ def dir_gen_proc(foldername):
     :param foldername: string
     :return: None
     '''
-    dir_name = foldername + "/"
+    dir_name = foldername + os.sep + "*"
     image_files_list = list(glob.glob(dir_name))
 
-    train_dir = "Fundus/train"
-    test_dir = "Fundus/test"
+    train_dir = "Fundus" + os.sep + "train"
+    test_dir = "Fundus" + os.sep + "test"
 
     if not (os.path.isdir(test_dir)):
         os.makedirs(test_dir)
@@ -28,9 +28,9 @@ def dir_gen_proc(foldername):
     test_files_list = image_files_list[int(0.7 * len(image_files_list)):]
 
     for train_file in train_files_list:
-        shutil.move(train_file, os.path.join(train_dir, train_file.split("/")[-1]))
+        shutil.move(train_file, os.path.join(train_dir, train_file.split(os.sep)[-1]))
     for test_file in test_files_list:
-        shutil.move(test_file, os.path.join(test_dir, test_file.split("/")[-1]))
+        shutil.move(test_file, os.path.join(test_dir, test_file.split(os.sep)[-1]))
 
     # test files classified with label
     test_files_list = list(glob.glob(os.path.join(test_dir, "*")))
@@ -43,9 +43,9 @@ def dir_gen_proc(foldername):
     for test_file in test_files_list:
         label = get_label(test_file)
         if label == 1:
-            shutil.move(test_file, os.path.join(test_dir, "Glaucoma", test_file.split("/")[-1]))
+            shutil.move(test_file, os.path.join(test_dir, "Glaucoma", test_file.split(os.sep)[-1]))
         else:
-            shutil.move(test_file, os.path.join(test_dir, "Normal", test_file.split("/")[-1]))
+            shutil.move(test_file, os.path.join(test_dir, "Normal", test_file.split(os.sep)[-1]))
 
     # train files classified with label
     train_files_list = list(glob.glob(os.path.join(train_dir, "*")))
@@ -58,9 +58,9 @@ def dir_gen_proc(foldername):
     for train_file in train_files_list:
         label = get_label(train_file)
         if label == 1:
-            shutil.move(train_file, os.path.join(train_dir, "Glaucoma", train_file.split("/")[-1]))
+            shutil.move(train_file, os.path.join(train_dir, "Glaucoma", train_file.split(os.sep)[-1]))
         else:
-            shutil.move(train_file, os.path.join(train_dir, "Normal", train_file.split("/")[-1]))
+            shutil.move(train_file, os.path.join(train_dir, "Normal", train_file.split(os.sep)[-1]))
 
 
 def get_label(file_path):
@@ -71,7 +71,7 @@ def get_label(file_path):
     '''
 
     # split filepath to get filename
-    file_name = file_path.split("/")[-1]
+    file_name = file_path.split(os.sep)[-1]
     # get id, OSOD
     id = int(file_name.split("_")[0][1:])
     osod = file_name.split("_")[1]
