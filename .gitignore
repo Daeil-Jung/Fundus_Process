@@ -1,4 +1,5 @@
 Fundus
+DBdata.csv
 *.zip
 .idea
 venv
