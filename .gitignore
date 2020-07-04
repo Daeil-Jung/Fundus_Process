@@ -3,3 +3,4 @@ DBdata.csv
 *.zip
 .idea
 venv
+*.pyc
