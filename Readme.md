@@ -1,5 +1,6 @@
-# Alert
-This project is works on *Windows 10*.
+# Environmnets
+`OS : Windows 10 `
+`Python version: 3.7`
 
 # requirements
 ```shell script
