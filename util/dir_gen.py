@@ -62,6 +62,8 @@ def dir_gen_proc(foldername):
         else:
             shutil.move(train_file, os.path.join(train_dir, "Normal", train_file.split(os.sep)[-1]))
 
+    print("딥러닝에 적합한 디렉토리 생성 및 구분이 완료되었습니다.")
+
 
 def get_label(file_path):
     '''
