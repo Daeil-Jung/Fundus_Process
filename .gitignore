@@ -4,3 +4,4 @@ DBdata.csv
 .idea
 venv
 *.pyc
+logs
