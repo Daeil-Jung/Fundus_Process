@@ -8,6 +8,7 @@ import os, datetime
 import pandas as pd
 
 tf.config.set_visible_devices([], 'GPU')
+tf.random.set_seed(1234)
 
 cur_dir = os.path.abspath(os.getcwd())
 csv_data = pd.read_csv(os.path.join(cur_dir, "DBdata.csv"))
